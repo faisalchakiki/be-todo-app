@@ -10,7 +10,6 @@ app.use(cors())
 app.use(express.json({ extended: true })); //parse data
 app.use(express.urlencoded({ extended: true })); //parse data
 app.use("/", routes);
-
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })

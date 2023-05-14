@@ -1,8 +1,8 @@
 const express = require('express')
 const routes = express.Router()
 
-const tasksRouter = require('./taskRouter.js')
+const todoRouter = require('./todoRouter.js')
 
-routes.use('/todos', tasksRouter)
+routes.use('/todos', todoRouter)
 
 module.exports = routes
