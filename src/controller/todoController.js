@@ -18,7 +18,8 @@ const getTodos = (req, res) => {
 
 const createTodo = async (req, res) => {
   try {
-    const { category, description } = req.body;
+    const { category, description } = req.body[0];
+   
     const id = nanoid()
     const newTodo = {
       "id": id,
