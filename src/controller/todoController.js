@@ -19,7 +19,7 @@ const getTodos = (req, res) => {
 const createTodo = async (req, res) => {
   try {
     const { category, description } = req.body[0];
-   
+
     const id = nanoid()
     const newTodo = {
       "id": id,
@@ -52,13 +52,14 @@ const createTodo = async (req, res) => {
 const updateTodo = (req, res) => {
   try {
     const id = req.param('id');
-    const { category, description } = req.body;
+    const { category, description, isCompleted } = req.body;
     const index = dataTodos.findIndex((n) => n.id === id)
     if (index !== -1) {
       dataTodos[index] = {
         ...dataTodos[index],
         description,
         category,
+        isCompleted: Boolean(isCompleted)
       };
       return res.status(200).json({
         success: true,
@@ -75,6 +76,7 @@ const updateTodo = (req, res) => {
     });
   }
 }
+
 
 const deleteTodo = (req, res) => {
   try {
