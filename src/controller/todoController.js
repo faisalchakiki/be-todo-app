@@ -16,6 +16,24 @@ const getTodos = (req, res) => {
   }
 }
 
+const getDetailTodos = (req, res) => {
+  try {
+    const id = req.param('id');
+    const index = dataTodos.findIndex((n) => n.id === id)
+
+    return res.status(200).json({
+      success: true,
+      message: "Success Get Todo",
+      results: dataTodos[index],
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "Internal Server Error",
+    });
+  }
+}
+
 const createTodo = async (req, res) => {
   try {
     const { category, description } = req.body[0];
@@ -77,7 +95,6 @@ const updateTodo = (req, res) => {
   }
 }
 
-
 const deleteTodo = (req, res) => {
   try {
     const id = req.param('id');
@@ -100,4 +117,4 @@ const deleteTodo = (req, res) => {
 }
 
 
-module.exports = { createTodo, getTodos, updateTodo, deleteTodo }
+module.exports = { createTodo, getTodos, updateTodo, deleteTodo, getDetailTodos }
